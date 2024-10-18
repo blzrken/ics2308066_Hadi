@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course - Search</title>
+</head>
+<body>
+    <h1>Welcome to Course Search</h1>
+    <h3>Search Course</h3>
+    <form action="" method="GET">
+        Enter the Course: <input type="text" name="code">
+        <input type="submit" value="SEARCH">
+    </form>
+    <br>
+
+    <table border="1">
+        <th>Code</th><th>Description</th>
+
+    {% for x in data %}
+    <tr>
+        <td>{{ x.code }}</td>
+        <td>{{ x.description }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'course' %}">Back to Course List</a>
+</body>
+</html>

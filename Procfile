@@ -1,0 +1,1 @@
+web: gunicorn ics2308066_Hadi.wsgi --log-file -

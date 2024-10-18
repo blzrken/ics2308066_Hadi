@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Course</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        th, td {
+            text-align: left;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kolej Profesional MARA Indera Mahkota</h1>
+    <h2>UPDATE COURSE</h2>
+
+    <form action="{% url 'update_course_post' course.code %}" method="post">
+        {% csrf_token %}
+        <label for="code">Course Code</label>
+        <input type="text" id="code" name="code" value="{{ course.code }}" readonly><br><br>
+
+        <label for="description">Description</label>
+        <input type="text" id="desc" name="desc" value="{{ course.description }}"><br><br>
+
+        <input type="submit" value="SAVE"><br><br>
+    </form>
+
+    <br><br>
+    <a href="{% url 'course' %}">BACK TO COURSE LIST</a>
+</body>
+</html>

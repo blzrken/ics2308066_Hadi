@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Info</title>
+    <style>
+        label {
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 3px solid;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'mentor' %}" method="post">
+        {% csrf_token %}
+        <label for="">Enter Mentor ID: </label>
+        <br>
+        <input type="text" name="mentorid">
+        <br>
+        <label for="">Enter Mentor Name: </label>
+        <br>
+        <input type="text" name="mentorname">
+        <br>
+        <label for="">Enter Mentor Room Number: </label>
+        <br>
+        <input type="text" name="mentorroom">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Mentor List:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Room Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mentor in mentor_list %}
+                <tr>
+                    <td>{{ mentor.mentorid }}</td>
+                    <td>{{ mentor.mentorname }}</td>
+                    <td>{{ mentor.mentorroom }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

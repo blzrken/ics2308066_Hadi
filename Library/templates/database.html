@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>book id</th>
+            <th>title</th>
+            <th>author</th>
+            <th>published year</th>
+        </tr>
+        {% for x in Books %}
+        <tr>
+            <td>{{x.book_id}}</td>
+            <td>{{x.title}}</td>
+            <td>{{x.author}}</td>
+            <td>{{x.published_year}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>borrow id</th>
+            <th>borrow date</th>
+            <th>return date</th>
+            <th>book id</th>
+            <th>student id</th>
+        </tr>
+        {% for x in Borrowings %}
+        <tr>
+            <td>{{x.borrow_id}}</td>
+            <td>{{x.borrow_date}}</td>
+            <td>{{x.return_date}}</td>
+            <td>{{x.book_id_id}}</td>
+            <td>{{x.student_id_id}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if greeting == 1 %}
+    <h1>CORRECT BRU</h1>
+    {% else %}
+    <h1>INCORRECT BRU</h1>
+    {% endif %}
+</body>
+</html>

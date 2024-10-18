@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolej Profesional MARA Indera Mahkota</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        th, td {
+            text-align: left;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>KOLEJ PROFESIONAL MARA INDERA MAHKOTA</h1>
+    <h2>COURSE</h2>
+
+    <form action="{% url 'course' %}" method="post">
+        {% csrf_token %}
+        <label for="code">Course Code</label>
+        <input type="text" id="code" name="code"><br><br>
+
+        <label for="desc">Description</label>
+        <input type="text" id="desc" name="desc"><br><br>
+
+        <input type="submit" value="SAVE"><br><br>
+    </form>
+
+    <p>{{ message }}</p>
+
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for x in course %}
+        <tr>
+            <td>{{ x.code }}</td>
+            <td>{{ x.description }}</td>
+            <td>
+            {% if x.code %}
+                <a href="{% url 'update_course' x.code %}">Update</a>
+                <td><a href="{% url 'delete_course' x.code %}" onclick="return confirm('Are you sure you want to delete this course?');">Delete</a></td>
+            {% else %}
+                No code available
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><br>
+    <a href="{% url 'index' %}">BACK TO HOMEPAGE</a>
+</body>
+</html>
